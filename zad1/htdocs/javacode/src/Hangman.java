@@ -77,12 +77,8 @@ public class Hangman {
         }
 
         char ch = Character.toUpperCase(inputToken[1].charAt(0));
-
-        //clearCookie("City");
-
         String cookie = System.getenv("HTTP_COOKIE");
         String currentWordState;
-
 
         if (cookie == null) {
             cookie = "char=" + "_ ".repeat(grad.length());
@@ -105,12 +101,12 @@ public class Hangman {
                 System.out.println("You guessed correctly - " + grad);
             } else {
                 setCookie("char",word);
-                System.out.println(HtmlGen.generateSimpleHtml("Hangman", new String[]{"HIT", word}));
+                System.out.println(HtmlGen.generateSimpleHtml("Hangman", new String[]{word}));
             }
 
         } else {
             printHTTPHeader();
-            System.out.println(HtmlGen.generateSimpleHtml("Hangman", new String[]{"MISS", currentWordState}));
+            System.out.println(HtmlGen.generateSimpleHtml("Hangman", new String[]{currentWordState}));
         }
     }
 

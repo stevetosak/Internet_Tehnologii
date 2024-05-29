@@ -8,7 +8,7 @@ public class HttpGen {
     }
 
     public static String getCookie(String cookieName) {
-        String[] cookies = System.getenv("HTTP_COOKIE").split(" ");
+        String[] cookies = System.getenv("HTTP_COOKIE").split(";");
 
         for (String ck : cookies) {
             String[] nv = ck.split("=");
