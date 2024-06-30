@@ -1,1 +1,1 @@
-docker exec -i -t zad1 /bin/bash
+docker exec -i -t IT_zad1 /bin/bash

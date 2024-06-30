@@ -81,7 +81,7 @@ public class Hangman {
         String currentWordState;
 
         if (cookie == null) {
-            cookie = "char=" + "_ ".repeat(grad.length());
+            cookie = "word=" + "_ ".repeat(grad.length());
         }
         currentWordState = cookie.split("=")[1];
 
@@ -97,10 +97,10 @@ public class Hangman {
             String word = new String(chrs);
 
             if (checkIfFinished(word)) {
-                clearCookie("char");
+                clearCookie("word");
                 System.out.println("You guessed correctly - " + grad);
             } else {
-                setCookie("char",word);
+                setCookie("word",word);
                 System.out.println(HtmlGen.generateSimpleHtml("Hangman", new String[]{word}));
             }
 

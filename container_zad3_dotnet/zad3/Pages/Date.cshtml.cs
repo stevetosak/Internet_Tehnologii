@@ -6,7 +6,7 @@ namespace zad3.Pages;
 public class DateModel : PageModel{
 
     public string? CurrentDate { get; set; }
-    public String GetDate(Boolean time){
+    public string GetDate(bool time){
         DateTime utcNow = DateTime.UtcNow;
         TimeZoneInfo utcPlusTwoZone = TimeZoneInfo.FindSystemTimeZoneById("E. Europe Standard Time");
         DateTime utcPlusTwoTime = TimeZoneInfo.ConvertTimeFromUtc(utcNow, utcPlusTwoZone);
@@ -33,7 +33,7 @@ public class DateModel : PageModel{
         return Page();
     }
 
-    public String ParseQueryString(String query){
+    public string ParseQueryString(string query){
         string [] paramval = query.Split("?");
         if(paramval.Length > 1){
             return paramval[1].Split("=")[0];

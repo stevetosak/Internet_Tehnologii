@@ -15,7 +15,7 @@ public class HtmlGen {
         if(bodyContent.length != 0){
             for(String text : bodyContent){
                 if(!Objects.equals(text, ""))
-                    doc.append("<p>").append(text).append("<p>").append("\n");
+                    doc.append("<p id=\"data\">").append(text).append("<p>").append("\n");
             }
         }
         doc.append("</body>\n" + "</html>");

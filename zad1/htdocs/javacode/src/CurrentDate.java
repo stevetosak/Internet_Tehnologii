@@ -32,12 +32,11 @@ public class CurrentDate{
                 System.out.println(errorMsg());
                 return;
             }
-            
-            LocalDateTime currentTime = LocalDateTime.now(ZoneId.of("UTC+2"));
-            currentTime.format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH24:m:ss"));
-            String currentTimeString = currentTime.toString();
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
+            String currentTime = LocalDateTime.now(ZoneId.of("UTC+2")).format(formatter);
             System.out.println(HtmlGen.generateSimpleHtml("Current Date and Time",
-                    new String[]{currentTimeString}));
+                    new String[]{currentTime}));
         }
     }
 }
