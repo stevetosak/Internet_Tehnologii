@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.time.ZoneOffset;
 
 public class CurrentDate{
     static String errorMsg(){
@@ -15,11 +16,12 @@ public class CurrentDate{
     public static void main(String[] args){
         String queryString = System.getenv("QUERY_STRING");
         if(queryString == null || queryString.isEmpty()){
-            String currentTime = String.valueOf(LocalDate.now(ZoneId.of("UTC+1")));
+            String currentTime = String.valueOf(LocalDate.now(ZoneId.of("UTC+2")));
             String document = HtmlGen.generateSimpleHtml("Current Date",new String[]{currentTime});
             System.out.println(document);
         }
-        else{
+        else {
+
             String[] params = queryString.split("&");
             if(params.length > 1){
                 System.out.println(errorMsg());
@@ -31,7 +33,7 @@ public class CurrentDate{
                 return;
             }
             
-            LocalDateTime currentTime = LocalDateTime.now();
+            LocalDateTime currentTime = LocalDateTime.now(ZoneId.of("UTC+2"));
             currentTime.format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH24:m:ss"));
             String currentTimeString = currentTime.toString();
             System.out.println(HtmlGen.generateSimpleHtml("Current Date and Time",
