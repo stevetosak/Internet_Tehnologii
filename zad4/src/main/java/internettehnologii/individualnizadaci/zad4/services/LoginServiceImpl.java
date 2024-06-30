@@ -1,6 +1,7 @@
 package internettehnologii.individualnizadaci.zad4.services;
 
 import internettehnologii.individualnizadaci.zad4.entities.User;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

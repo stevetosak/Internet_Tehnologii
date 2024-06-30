@@ -1,7 +1,7 @@
 package internettehnologii.individualnizadaci.zad4.controllers;
 
 import internettehnologii.individualnizadaci.zad4.services.LoginService;
-import internettehnologii.individualnizadaci.zad4.services.LoginServiceImpl;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -20,9 +20,11 @@ public class IndexController{
     }
 
     @GetMapping("/application")
-    public String index(){
+    public String index(HttpSession session){
+        if(session.getAttribute("username") )
         return "index";
     }
+
     @PostMapping("/application")
     public String login(HttpSession session,Model model, @RequestParam("username") String username, @RequestParam("password") String password){
         String role = loginService.validate(username,password);
@@ -40,5 +42,5 @@ public class IndexController{
         }
     }
 
-    
+
 }

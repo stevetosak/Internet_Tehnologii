@@ -18,7 +18,10 @@
     </div>
     <div class="form-group m-lg-2">
         <button type="submit" class="btn btn-primary">Submit</button>
-        <button type="button" class="btn btn-secondary">Cancel</button>
+        <button type="button" class="btn btn-secondary" onclick="function resetForm() {
+            document.getElementById('loginForm').reset();
+        }
+        resetForm()">Cancel</button>
     </div>
 
     <p th:text="${msg}"></p>
