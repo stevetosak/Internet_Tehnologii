@@ -21,14 +21,14 @@ public class DateController {
     @RequestMapping("/date")
     public String dateView(HttpSession session, Model model, @RequestParam(value = "option",required = false) String option){
 
-      if(isValidSession(session)) return "redirect:/application";
+      if(!isValidSession(session)) return "redirect:/application";
       
       String response = "";
 
         if(option != null){
             switch (option) {
                 case "CGI" -> response = clientService.sendGetRequest("http://localhost:8081/date.cgi");
-                case "Java" -> response = clientService.sendGetRequest("http://localhost:8082/date");
+                case "Java" -> response = clientService.sendGetRequest("http://localhost:8082/date?time");
                 case "DotNet" -> response = clientService.sendGetRequest("http://localhost:8083/date");
                 default -> response = "ERROR";
             }

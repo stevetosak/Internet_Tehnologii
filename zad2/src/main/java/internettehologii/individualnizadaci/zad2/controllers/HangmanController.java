@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
 @Controller
 public class HangmanController {
     private final HangmanGameManager hangmanGameManager;
@@ -24,30 +28,39 @@ public class HangmanController {
         hangmanGameManager = new HangmanGameManager();
     }
 
-    @GetMapping("/hangman")
+    @GetMapping(value = "/hangman", produces={"text/html; charset=UTF-8"})
     public String HangmanGet(Model model,
                              HttpServletRequest request, HttpServletResponse response,
-                             @CookieValue(value = "currentWord", defaultValue = "EMPTY") String wordStateCookie) {
+                             @CookieValue(value = "word", defaultValue = "EMPTY") String wordStateCookie) {
 
-        String[] paramNvalue = inputManager.parseQueryString(request.getQueryString());
+
+        String[] paramNvalue;
+        if(request.getQueryString() != null){
+             paramNvalue = inputManager.parseQueryString(URLDecoder.decode(request.getQueryString(),StandardCharsets.UTF_8));
+        } else {
+            paramNvalue = null;
+        }
+
         return handleRequest(model, response, wordStateCookie, paramNvalue);
     }
 
 
-    @PostMapping("/hangman")
+    @PostMapping(value = "/hangman", produces={"text/html; charset=UTF-8"})
     public String HangmanPost(HttpServletResponse response, Model model, @RequestBody String request,
-                              @CookieValue(value = "currentWord", defaultValue = "EMPTY") String wordStateCookie) {
-        String[] paramNvalue = inputManager.parsePostReq(request);
+                              @CookieValue(value = "word", defaultValue = "EMPTY") String wordStateCookie) {
+        String[] paramNvalue = inputManager.parsePostReq(URLDecoder.decode(request,StandardCharsets.UTF_8));
+        wordStateCookie = URLDecoder.decode(wordStateCookie,StandardCharsets.UTF_8);
         return handleRequest(model, response, wordStateCookie, paramNvalue);
     }
 
-    private String handleRequest(Model model, HttpServletResponse response, @CookieValue(value = "currentWord", defaultValue = "EMPTY") String wordStateCookie, String[] paramNvalue) {
+    private String handleRequest(Model model, HttpServletResponse response, @CookieValue(value = "word", defaultValue = "EMPTY") String wordStateCookie, String[] paramNvalue) {
         String msg = inputManager.validateInput(paramNvalue);
         if (msg != null) {
             model.addAttribute("title", msg);
             model.addAttribute("err", inputManager.getErrorMessage());
             return "error";
         }
+        wordStateCookie = URLDecoder.decode(wordStateCookie,StandardCharsets.UTF_8);
         hangmanGameManager.updatePage(wordStateCookie, Character.toUpperCase(paramNvalue[1].charAt(0)), response, model);
         return "hangman";
     }

@@ -7,8 +7,6 @@ public class HangmanGameManager {
     private Dictionary<char,List<int>> ChToPosMap = new Dictionary<char,List<int>>();
 
 
-    private CityGen cityGen = new CityGen();
-
     public HangmanGameManager(){
         reset();
     }
@@ -27,7 +25,7 @@ public class HangmanGameManager {
 
         string currentWordString = new string(currentWordChArray);
         CookieOptions options = new CookieOptions(){
-            Path = "/Hangman"
+            Path = "/hangman"
         };
         if(gameFinished(currentWordString)){
             response.Cookies.Delete("word",options);
@@ -44,7 +42,7 @@ public class HangmanGameManager {
 
     private void reset() {
         ChToPosMap = new Dictionary<char, List<int>>();
-        word = cityGen.getRandomCity();
+        word = "СТРУМИЦА";
         defaultString = new string('_',word.Length);
         for (int i = 0; i < word.Length; i++) {
             if (!ChToPosMap.ContainsKey(word[i])) {

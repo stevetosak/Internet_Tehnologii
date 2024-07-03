@@ -1,0 +1,10 @@
+@page
+@model HangmanModel
+@{
+    ViewData["Title"] = Model.Title;
+}
+@if(Model.Description != null){
+    <p>@Model.Description</p>
+} else {
+    <p id="data">@Model.Word</p>
+}

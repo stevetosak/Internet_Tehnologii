@@ -21,7 +21,13 @@ public class IndexController{
 
     @GetMapping("/application")
     public String index(HttpSession session){
-        if(session.getAttribute("username") )
+        if(session.getAttribute("username") != null && session.getAttribute("role") != null){
+            if(session.getAttribute("role") == "DATE"){
+                return "redirect:/application/date";
+            } else {
+                return "redirect:/application/hangman";
+            }
+        }
         return "index";
     }
 

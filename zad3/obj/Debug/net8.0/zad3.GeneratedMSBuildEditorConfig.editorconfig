@@ -18,16 +18,16 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /home/stevetosak/Fakultet/Internet_Tehnologii/225144/zad3
 build_property._RazorSourceGeneratorDebug = 
 
-[/home/stevetosak/Fakultet/Internet_Tehnologii/225144/zad3/Pages/Date.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRGF0ZS5jc2h0bWw=
+[/home/stevetosak/Fakultet/Internet_Tehnologii/225144/zad3/Pages/date.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvZGF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/stevetosak/Fakultet/Internet_Tehnologii/225144/zad3/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/stevetosak/Fakultet/Internet_Tehnologii/225144/zad3/Pages/Hangman.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSGFuZ21hbi5jc2h0bWw=
+[/home/stevetosak/Fakultet/Internet_Tehnologii/225144/zad3/Pages/hangman.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvaGFuZ21hbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/stevetosak/Fakultet/Internet_Tehnologii/225144/zad3/Pages/Index.cshtml]

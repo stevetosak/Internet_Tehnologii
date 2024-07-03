@@ -2,6 +2,7 @@ package gen;
 
 import java.util.Objects;
 
+
 public class HtmlGen {
     public static String generateSimpleHtml(String Title, String[] bodyContent){
         StringBuilder doc = new StringBuilder("""
@@ -15,7 +16,7 @@ public class HtmlGen {
         if(bodyContent.length != 0){
             for(String text : bodyContent){
                 if(!Objects.equals(text, ""))
-                    doc.append("<p id=\"data\">").append(text).append("<p>").append("\n");
+                    doc.append("<p id=\"data\">").append(text).append("</p>").append("\n");
             }
         }
         doc.append("</body>\n" + "</html>");
