@@ -7,10 +7,9 @@ public class DateModel : PageModel{
 
     public string? CurrentDate { get; set; }
     public string GetDate(bool time){
-        DateTime utcNow = DateTime.UtcNow;
-        TimeZoneInfo utcPlusTwoZone = TimeZoneInfo.FindSystemTimeZoneById("E. Europe Standard Time");
+        DateTime utcNow = DateTime.Now;
+        TimeZoneInfo utcPlusTwoZone = TimeZoneInfo.FindSystemTimeZoneById("Е. European Standard Time");
         DateTime utcPlusTwoTime = TimeZoneInfo.ConvertTimeFromUtc(utcNow, utcPlusTwoZone);
-
         if (!time){
             return utcPlusTwoTime.ToString("yyyy-MM-dd");
         } else {

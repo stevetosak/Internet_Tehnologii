@@ -3,11 +3,18 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
+[AutoValidateAntiforgeryToken]
+[IgnoreAntiforgeryToken]
 public class HangmanModel : PageModel{
 
     public string? Word;
     public string? Title;
     public string? Description = null;
+    private readonly ILogger<HangmanModel> _logger;
+
+    public HangmanModel(ILogger<HangmanModel> logger){
+        _logger = logger;
+    }
 
     static HangmanGameManager hangmanGameManager = new HangmanGameManager();
 
@@ -25,8 +32,11 @@ public class HangmanModel : PageModel{
             return true;
         }
     }
+       public IActionResult OnPost(){
+        if(!ModelState.IsValid){
+            _logger.LogWarning("BAD MODEL STATE");
+        }
 
-    public IActionResult OnPost(){
         string? input = Request.Form["operand1"];
         HandleRequest(input);
 
